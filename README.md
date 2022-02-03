@@ -6,3 +6,6 @@ PlumeJS template with vite bundler
 
 ## To build app
 `npm run build`
+
+## To run unit tests
+`npm run test`
