@@ -1,5 +1,6 @@
 import { Component, html } from '@plumejs/core';
-import styles from './styles/base.scss';
+// as per https://github.com/vitejs/vite/pull/2148
+import styles from './styles/base.scss?inline';
 
 @Component({
   selector: 'app-root',
