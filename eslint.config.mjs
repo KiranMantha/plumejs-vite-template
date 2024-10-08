@@ -16,15 +16,6 @@ export default [
     },
     ignores: ['build/**/*', 'eslint.config.mjs'],
     rules: {
-      // 'no-unused-vars': [
-      //   'error',
-      //   {
-      //     vars: 'all',
-      //     args: 'after-used',
-      //     ignoreRestSiblings: true,
-      //     varsIgnorePattern: '^Component$' // Ignore class decorated with @Component
-      //   }
-      // ],
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
@@ -39,8 +30,7 @@ export default [
         {
           allowShortCircuit: true,
           allowTernary: true,
-          allowTaggedTemplates: true,
-          allowDecorators: true // Allow decorators
+          allowTaggedTemplates: true
         }
       ],
       '@typescript-eslint/no-explicit-any': 'off',
