@@ -1,6 +1,9 @@
 import { Component, html } from '@plumejs/core';
 // as per https://github.com/vitejs/vite/pull/2148
+import { env } from './env';
 import styles from './styles/base.scss?inline';
+
+console.log('env', env);
 
 @Component({
   selector: 'test-ele'
