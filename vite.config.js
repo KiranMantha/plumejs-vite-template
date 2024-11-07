@@ -1,38 +1,44 @@
 /// <reference types="vitest" />
 import { visualizer } from 'rollup-plugin-visualizer';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 
-export default defineConfig({
-  base: '',
-  build: {
-    outDir: 'dist',
-    sourcemap: false,
-    rollupOptions: {
-      plugins: [
-        visualizer({
-          title: 'Plumejs example repo',
-          open: true
-        })
-      ]
-    }
-  },
-  server: {
-    host: true,
-    port: 3001,
-    open: '/'
-  },
-  test: {
-    globals: true,
-    environment: 'happy-dom',
-    deps: {
-      inline: true
+export default ({ mode }) => {
+  const env = { ...loadEnv(mode, process.cwd(), 'PLUME_') };
+  return defineConfig({
+    base: '',
+    define: {
+      'process.env': env
     },
-    coverage: {
-      include: ['src/**'],
-      provider: 'istanbul',
-      reporter: ['text', 'json', 'html'],
-      cleanOnRerun: true,
-      reportsDirectory: 'coverage'
+    build: {
+      outDir: 'dist',
+      sourcemap: false,
+      rollupOptions: {
+        plugins: [
+          visualizer({
+            title: 'Plumejs example repo',
+            open: true
+          })
+        ]
+      }
+    },
+    server: {
+      host: true,
+      port: 3001,
+      open: '/'
+    },
+    test: {
+      globals: true,
+      environment: 'happy-dom',
+      deps: {
+        inline: true
+      },
+      coverage: {
+        include: ['src/**'],
+        provider: 'istanbul',
+        reporter: ['text', 'json', 'html'],
+        cleanOnRerun: true,
+        reportsDirectory: 'coverage'
+      }
     }
-  }
-});
+  });
+};
